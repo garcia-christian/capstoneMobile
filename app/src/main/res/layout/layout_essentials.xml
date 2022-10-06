@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TableLayout
+        android:layout_width="102dp"
+        android:layout_height="143dp"
+        android:background="@drawable/reqtangle_rounded"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+        <TableRow>
+            <TextView
+                android:id="@+id/essentials_label1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:text="KN95 Mask"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/prod_pic"
+                android:layout_width="match_parent"
+                android:layout_height="95dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:src="@drawable/mask_sample"/>
+        </TableRow>
+
+
+
+    </TableLayout>
+
+</LinearLayout>

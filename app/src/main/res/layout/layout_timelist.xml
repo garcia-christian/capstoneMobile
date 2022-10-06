@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:id="@+id/timetext_txt"
+        android:layout_width="193dp"
+        android:layout_height="40dp"
+        android:text="Add Time"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        ></TextView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addtime_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/elipsev"
+        android:text="+"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/white"
+        android:textSize="25dp" />
+
+</LinearLayout>

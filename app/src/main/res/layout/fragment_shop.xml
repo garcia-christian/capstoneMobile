@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ShopFragment"
+    android:paddingBottom="55dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+            <ImageView
+                android:id="@+id/searchbtn_shop"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_baseline_search_24"
+                app:layout_constraintEnd_toStartOf="@id/notifbtn_shop"
+                app:layout_constraintTop_toBottomOf="@id/h1"
+                app:tint="@color/nav_def" />
+
+            <ImageView
+                android:id="@+id/notifbtn_shop"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_baseline_notifications_24"
+                app:layout_constraintEnd_toStartOf="@id/shopbtn_shop"
+                app:layout_constraintTop_toBottomOf="@id/h1"
+                app:tint="@color/nav_def" />
+
+            <ImageView
+                android:id="@+id/shopbtn_shop"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginEnd="30dp"
+                android:src="@drawable/ic_baseline_shopping_cart_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/h1"
+                app:tint="@color/nav_def" />
+
+
+            <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                android:id="@+id/carousel"
+                android:layout_width="370dp"
+                android:layout_height="167dp"
+                app:showBottomShadow="false"
+                app:showTopShadow="false"
+                app:showNavigationButtons="false"
+
+                app:showCaption="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guideline5" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="TOP PHARMACEURTICALS"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/carousel" />
+
+            <HorizontalScrollView
+                android:id="@+id/scroll_toppharma"
+                android:layout_width="349dp"
+                android:layout_height="81dp"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView2">
+                <LinearLayout
+                    android:id="@+id/toparma_linear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="SHOP BY CATEGORIES"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/scroll_toppharma" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none"
+                android:id="@+id/cat_scroll"
+                app:layout_constraintTop_toBottomOf="@id/textView3">
+                <LinearLayout
+                    android:id="@+id/categories_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="COVID ESSENTIALS"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cat_scroll" />
+            <HorizontalScrollView
+                android:id="@+id/essentials_list_scroll_shop"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView4">
+
+                <LinearLayout
+                    android:id="@+id/essentials_list_shop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="FEATURED PRODUCTS"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/essentials_list_scroll_shop" />
+
+            <HorizontalScrollView
+                android:id="@+id/products_list_scroll_shop"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView5">
+
+                <LinearLayout
+                    android:id="@+id/products_list_shop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="DRUGSTORE NEAR ME"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/products_list_scroll_shop" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/h1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="40dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="88dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

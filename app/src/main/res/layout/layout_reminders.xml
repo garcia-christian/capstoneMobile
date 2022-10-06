@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="3dp">
+
+    <TableLayout
+        android:id="@+id/tableLayout3"
+        android:layout_width="288dp"
+        android:layout_height="175dp"
+        android:background="@drawable/border"
+        android:padding="5dp"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="3dp">
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/med_name_rem"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="DOLFENAL"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/med_day_rem"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Every Mon, Wed, Fri" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/med_time_rem"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Time: 8:30AM, 12:00PM, 7:30PM" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/med_date_rem"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Until Feb 12, 2022" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/med_left_rem"
+                android:text="14 tablets left"
+                android:textColor="@color/price_red" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EDIT"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/main"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline13"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="291dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="178dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

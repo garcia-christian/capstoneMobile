@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/background_l1">
+
+    </item>
+    <item android:top="90dp">
+
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white"></solid>
+
+
+        </shape>
+    </item>
+</layer-list>

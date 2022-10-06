@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:paddingBottom="10dp"
+    tools:context=".setReminder">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_setrem">
+
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SET REMINDER"
+                android:textColor="@color/white"
+                android:textSize="21dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline14" />
+
+            <ImageView
+                android:id="@+id/back_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="-6dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline14" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guideline15">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+
+                            android:layout_alignParentTop="true"
+                            android:text="MEDICINE NAME"
+                            android:textSize="20dp" />
+
+                        <Spinner
+                            android:id="@+id/spinner1"
+                            android:layout_width="280dp"
+                            android:layout_height="42dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/border_r_20"
+                            android:padding="10dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:text="DOSE"
+                            android:textSize="20dp" />
+
+                        <EditText
+                            android:id="@+id/dose"
+                            android:layout_width="63dp"
+                            android:layout_height="42dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/border_r_20"
+                            android:inputType="number"
+                            android:padding="10dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:text="PREFERED TIME"
+                    android:textSize="20dp" />
+
+                <!-- time 1 -->
+
+                <LinearLayout
+                    android:id="@+id/timeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"></LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="176dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="10dp"
+                            android:text="SCHEDULE"
+                            android:textSize="20dp" />
+
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/daysw"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="10dp"
+                            android:checked="false"
+                            android:layoutDirection="rtl"
+                            android:text="Everyday"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="176dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="10dp"
+                            android:text="STATUS"
+                            android:textSize="20dp" />
+
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/activesw"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="10dp"
+                            android:checked="false"
+                            android:layoutDirection="rtl"
+                            android:text="Active"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TableRow>
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/ck_mon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="12dp"
+                            android:text="Mon"
+                            android:textSize="18sp"
+                            android:visibility="visible" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/ck_tue"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="12dp"
+                            android:text="Tue"
+                            android:textSize="18sp"
+                            android:visibility="visible" />
+
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/ck_wed"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="12dp"
+                            android:text="Wed"
+                            android:textSize="18sp"
+                            android:visibility="visible" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/ck_thu"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="12dp"
+                            android:text="Thu"
+                            android:textSize="18sp"
+                            android:visibility="visible" />
+
+
+                    </TableRow>
+
+                    <TableRow>
+
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/ck_sat"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="12dp"
+                            android:text="Sat"
+                            android:textSize="18sp"
+                            android:visibility="visible" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/ck_fri"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="12dp"
+                            android:text="Fri"
+                            android:textSize="18sp"
+                            android:visibility="visible" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/ck_sun"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="12dp"
+                            android:text="Sun"
+                            android:textSize="18sp"
+                            android:visibility="visible" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="8dp"
+                    android:text="Notes (Optional)"
+                    android:textSize="22dp" />
+
+                <EditText
+                    android:id="@+id/rem_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_r_20"
+                    android:gravity="top"
+                    android:inputType="text|textMultiLine"
+                    android:padding="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Connect your Heremi Pill Box to amplify ll upcoming alerts. To do this, go to your; Profile > Settings > Connections." />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/submit_rem"
+                    android:layout_width="369dp"
+                    android:layout_height="54dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/sqr4c"
+                    android:text="SUBMIT"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:backgroundTint="@color/yellow_btn" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="51dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="88dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

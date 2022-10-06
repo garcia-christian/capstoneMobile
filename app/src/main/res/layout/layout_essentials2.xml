@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:layout_width="102dp"
+        android:layout_height="143dp"
+        android:background="@drawable/reqtangle_rounded"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+        <TableRow>
+            <TextView
+                android:id="@+id/essentials_label1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:text="Rubbing Alcohol"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="95dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:src="@drawable/es_2"/>
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:id="@+id/essentials_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:text="45 php"
+                android:textColor="@color/price_red"
+                android:textSize="11dp" />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+</LinearLayout>

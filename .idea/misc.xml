@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable-v24/ellipse_2.xml" value="0.1" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3635" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable-v24/inputbg_1.xml" value="0.19" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/background.xml" value="0.2865" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/background_l1.xml" value="0.2865" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/background_setrem.xml" value="0.1615" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/border.xml" value="0.291" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/border_r_20.xml" value="0.1455" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/border_r_20_bottom.xml" value="0.1455" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/border_transprnt.xml" value="0.2035" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/borderl.xml" value="0.3485" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/borderr.xml" value="0.3485" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/elipse_1.xml" value="0.228" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/elipse_mask.xml" value="0.268" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/elipsev.xml" value="0.1425" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/essentials_list.xml" value="0.2075" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1425" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_baseline_alarm_24.xml" value="0.234" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.234" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3635" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.313" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_baseline_notifications_24.xml" value="0.3635" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1875" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.3635" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.234" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_calendar.xml" value="0.1875" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3635" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_nav.xml" value="0.268" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_nav_elipse.xml" value="0.2015" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_notif.xml" value="0.2935" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_rounded_square.xml" value="0.223" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_subtract.xml" value="0.215" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_subtract2.xml" value="0.1" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/ic_top_bg.xml" value="0.226" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/item_selector.xml" value="0.215" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/line.xml" value="0.2" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/navbar_body.xml" value="0.268" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/notif_missed.xml" value="0.1235" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/reqtangle_rounded.xml" value="0.2075" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/round_border_20.xml" value="0.1455" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/roundedbtn.xml" value="0.2075" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/drawable/sqr4c.xml" value="0.2595" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/activity_add_med.xml" value="0.33" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/activity_add_medicine.xml" value="0.22" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/activity_consult.xml" value="0.3625" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/activity_profile.xml" value="0.3625" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/activity_set_reminder.xml" value="0.5" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/activity_shop.xml" value="0.3625" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/bottom_navbar.xml" value="0.33" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/fragment_consult.xml" value="0.33" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/fragment_home2.xml" value="0.2296195652173913" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/fragment_navbar.xml" value="0.34601449275362317" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/fragment_shop.xml" value="0.16483516483516483" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_activedoctors.xml" value="1.0" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_categories.xml" value="1.1" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_categories2.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_categories3.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_categories4.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_categories5.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_doctors.xml" value="0.5" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_doctors_consult.xml" value="0.1" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_empty.xml" value="0.346875" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_essentials.xml" value="0.31343283582089554" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_essentials2.xml" value="0.67" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_essentials3.xml" value="0.25" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_essentials_shop.xml" value="0.3625" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_loading.xml" value="0.33" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_medicines.xml" value="0.67" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_missed.xml" value="0.5" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_notification.xml" value="0.67" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_products.xml" value="0.5" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_products2.xml" value="0.2976190476190476" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_products3.xml" value="0.3037037037037037" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_reminders.xml" value="0.5" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_timelist.xml" value="0.23369565217391305" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_toppharma.xml" value="0.1" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_toppharma2.xml" value="0.9" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_toppharma3.xml" value="0.1" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_toppharma4.xml" value="0.2537037037037037" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_toppharma5.xml" value="0.2537037037037037" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/layout/layout_toppharma6.xml" value="0.2537037037037037" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/heremiStartup/app/src/main/res/menu/bottom_nav.xml" value="0.3625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
