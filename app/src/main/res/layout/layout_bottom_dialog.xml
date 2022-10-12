@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_dialog"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/prod_img"
+        android:layout_width="134dp"
+        android:layout_height="134dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:src="@drawable/es_2"
+        android:background="@drawable/reqtangle_rounded2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/brand_name"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:text="Rubbing Alcohol"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/prod_img"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/generic_name"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_weight="1"
+        android:lines="3"
+        android:maxLines="3"
+        android:paddingTop="5dp"
+        android:text="Rasdasdar va sfa sdfsd vfafbl"
+        android:textColor="@color/black_default"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/prod_img"
+        app:layout_constraintTop_toBottomOf="@id/brand_name" />
+
+    <TextView
+        android:id="@+id/price_range"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_marginLeft="15dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:text="P10.22 - P13.34"
+        android:textColor="@color/price_red"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/prod_img"
+        app:layout_constraintTop_toBottomOf="@+id/generic_name" />
+
+    <TextView
+        android:id="@+id/avaialbleinpharmatxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Available in:"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
+
+        android:textColor="@color/black_default"
+        app:layout_constraintTop_toBottomOf="@+id/prod_img"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <LinearLayout
+        android:id="@+id/layoutEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avaialbleinpharmatxt"></LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

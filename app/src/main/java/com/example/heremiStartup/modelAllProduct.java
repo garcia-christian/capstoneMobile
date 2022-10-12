@@ -1,6 +1,6 @@
 package com.example.heremiStartup;
 
-public class modelProduct {
+public class modelAllProduct {
 
     private int global_med_id;
     private String global_brand_name;
@@ -11,7 +11,7 @@ public class modelProduct {
     private double min;
     private double max;
 
-    public modelProduct(int global_med_id, String global_brand_name, String global_generic_name, String med_cat_desc, int total, String image, double min, double max) {
+    public modelAllProduct(int global_med_id, String global_brand_name, String global_generic_name, String med_cat_desc, int total, String image, double min, double max) {
         this.global_med_id = global_med_id;
         this.global_brand_name = global_brand_name;
         this.global_generic_name = global_generic_name;
@@ -22,7 +22,7 @@ public class modelProduct {
         this.max = max;
     }
 
-    public modelProduct() {
+    public modelAllProduct() {
     }
 
     @Override

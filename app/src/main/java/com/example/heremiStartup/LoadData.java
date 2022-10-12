@@ -23,8 +23,10 @@ public class LoadData extends ProfileFragment {
     List<modelReminderRes> allremToday = new ArrayList<>();
     List<modelTimeRes> timeToday = new ArrayList<>();
     List<modelProduct> allProds = new ArrayList<>();
+    List<modelAllProduct> alphaProds = new ArrayList<>();
     public static ArrayList<modelLogRes> allData = new ArrayList<>();
     public static ArrayList<modelProduct> prod = new ArrayList<>();
+    public static ArrayList<modelAllProduct> allprod = new ArrayList<>();
     public LoadData(NotifAdapter notifAdapter) {
         this.notifAdapter = notifAdapter;
         datainit();
@@ -34,6 +36,7 @@ public class LoadData extends ProfileFragment {
     public LoadData(ProductAdapter productAdapter) {
         this.productAdapter = productAdapter;
         getproducts();
+        getAllproducts();
     }
     public LoadData(){
 
@@ -207,10 +210,34 @@ public class LoadData extends ProfileFragment {
             }
         });
     }
+    public void getAllproducts(){
+        Call<List<modelAllProduct>> modelProductCall = apiClient.getDeclaration().getallproducts();
+
+        modelProductCall.enqueue(new Callback<List<modelAllProduct>>() {
+            @Override
+            public void onResponse(Call<List<modelAllProduct>> call, Response<List<modelAllProduct>> response) {
+                alphaProds = response.body();
+                getallprod();
+            }
+
+            @Override
+            public void onFailure(Call<List<modelAllProduct>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void getallprod() {
+        allprod.clear();
+        for(int i = 0; i<alphaProds.size(); i++){
+            allprod.add(alphaProds.get(i));
+        }
+    }
+
     private void  getprod(){
 
         prod.clear();
-        for(int i = 0; i<allProds.size(); i++){
+        for(int i = 0; i<5; i++){
             prod.add(allProds.get(i));
         }
     }

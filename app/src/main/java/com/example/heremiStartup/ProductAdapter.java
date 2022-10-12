@@ -12,16 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductHolder> {
-
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     private ArrayList<modelProduct> prod;
     private Context context;
+    private OnProdListener onProdListener;
 
-    public ProductAdapter(Context context, ArrayList<modelProduct> prod) {
+    public ProductAdapter(Context context, ArrayList<modelProduct> prod, OnProdListener onProdListener) {
         this.prod = prod;
         this.context = context;
+        this.onProdListener = onProdListener;
     }
 
     public ProductAdapter() {
@@ -32,7 +35,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
     @Override
     public ProductAdapter.ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_essentials, parent, false);
-        return new ProductHolder(view);
+        return new ProductHolder(view, onProdListener);
     }
 
     @Override
@@ -46,15 +49,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
         return prod.size();
     }
 
-    public class ProductHolder extends RecyclerView.ViewHolder {
-        TextView prodName;
+    public class ProductHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView prodName,price;
         ImageView prodPic;
-
-        public ProductHolder(@NonNull View itemView) {
+        OnProdListener onProdListener;
+        public ProductHolder(@NonNull View itemView, OnProdListener onProdListener) {
             super(itemView);
             prodName = itemView.findViewById(R.id.essentials_label1);
             prodPic = itemView.findViewById(R.id.prod_pic);
-
+            price = itemView.findViewById(R.id.essentials_price);
+            this.onProdListener = onProdListener;
+            itemView.setOnClickListener(this);
 
 
         }
@@ -62,6 +67,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
         void setProdDetails(modelProduct prod) {
             prodName.setText(prod.getGlobal_brand_name());
             Glide.with(context).load(apiClient.BASEURL+prod.getImage()).into(prodPic);
+            price.setText("₱"+df.format(prod.getMin())+" - "+"₱"+df.format(prod.getMax()));
         }
+
+        @Override
+        public void onClick(View view) {
+            onProdListener.onProdClick(getAdapterPosition());
+        }
+    }
+    public interface OnProdListener{
+        void onProdClick(int position);
     }
 }

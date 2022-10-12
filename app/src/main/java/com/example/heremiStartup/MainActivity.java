@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
          LoadingDia loadingDiaProfile = new LoadingDia(MainActivity.this);
         LoadingDia loadingDiaHome = new LoadingDia(MainActivity.this);
+        LoadingDia loadingShop = new LoadingDia(MainActivity.this);
         fabMain = findViewById(R.id.fab);
         fab1 = findViewById(R.id.fab2);
         fab2 = findViewById(R.id.fab3);
@@ -79,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     case R.id.nav_shop:
-
-                        fragment = new ShopFragment();
+                        loadingShop.loadingDialog();
+                        fragment = new ShopFragment(loadingShop);
 
                         break;
                     case R.id.nav_location:

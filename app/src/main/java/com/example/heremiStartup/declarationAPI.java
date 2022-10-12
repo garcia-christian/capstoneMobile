@@ -39,4 +39,19 @@ public interface declarationAPI {
 
     @GET("/mobileshop/get-products")
     Call<List<modelProduct>> getproducts();
+
+    @GET("/mobileshop/get-allproducts")
+    Call<List<modelAllProduct>> getallproducts();
+
+    @GET("/mobileshop/get-pharmacies/{id}")
+    Call<List<modelPartialPharma>> getAvailablePharma(@Path("id") int id);
+
+    @GET("/mobileshop/get-pharmacy/{id}")
+    Call<List<modelPharmacy>>getPharma(@Path("id") int id);
+
+    @GET("/mobileshop/get-pharmacy/")
+    Call<List<modelPharmacy>> getPharma();
+
+    @GET("/mobileshop/get-pharmaproducts/{id}")
+    Call<List<modelPharmaProducts>>getPharmaProducts(@Path("id") int id);
 }

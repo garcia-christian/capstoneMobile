@@ -1,42 +1,49 @@
 package com.example.heremiStartup;
 
-public class modelProduct {
-
+public class modelPharmaProducts {
+    private int med_id;
     private int global_med_id;
     private String global_brand_name;
     private String global_generic_name;
     private String med_cat_desc;
-    private int total;
     private String image;
-    private double min;
-    private double max;
+    private double med_qty;
+    private double med_price;
 
-    public modelProduct(int global_med_id, String global_brand_name, String global_generic_name, String med_cat_desc, int total, String image, double min, double max) {
+    public modelPharmaProducts() {
+    }
+
+    public modelPharmaProducts(int med_id, int global_med_id, String global_brand_name, String global_generic_name, String med_cat_desc, String image, double med_qty, double med_price) {
+        this.med_id = med_id;
         this.global_med_id = global_med_id;
         this.global_brand_name = global_brand_name;
         this.global_generic_name = global_generic_name;
         this.med_cat_desc = med_cat_desc;
-        this.total = total;
         this.image = image;
-        this.min = min;
-        this.max = max;
-    }
-
-    public modelProduct() {
+        this.med_qty = med_qty;
+        this.med_price = med_price;
     }
 
     @Override
     public String toString() {
-        return "modelProduct{" +
-                "global_med_id=" + global_med_id +
+        return "modelPharmaProducts{" +
+                "med_id=" + med_id +
+                ", global_med_id=" + global_med_id +
                 ", global_brand_name='" + global_brand_name + '\'' +
                 ", global_generic_name='" + global_generic_name + '\'' +
                 ", med_cat_desc='" + med_cat_desc + '\'' +
-                ", total=" + total +
                 ", image='" + image + '\'' +
-                ", min=" + min +
-                ", max=" + max +
+                ", med_qty=" + med_qty +
+                ", med_price=" + med_price +
                 '}';
+    }
+
+    public int getMed_id() {
+        return med_id;
+    }
+
+    public void setMed_id(int med_id) {
+        this.med_id = med_id;
     }
 
     public int getGlobal_med_id() {
@@ -71,14 +78,6 @@ public class modelProduct {
         this.med_cat_desc = med_cat_desc;
     }
 
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
     public String getImage() {
         return image;
     }
@@ -87,21 +86,19 @@ public class modelProduct {
         this.image = image;
     }
 
-    public double getMin() {
-        return min;
+    public double getMed_qty() {
+        return med_qty;
     }
 
-    public void setMin(double min) {
-        this.min = min;
+    public void setMed_qty(double med_qty) {
+        this.med_qty = med_qty;
     }
 
-    public double getMax() {
-        return max;
+    public double getMed_price() {
+        return med_price;
     }
 
-    public void setMax(double max) {
-        this.max = max;
+    public void setMed_price(double med_price) {
+        this.med_price = med_price;
     }
 }
-
-

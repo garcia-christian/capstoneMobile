@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <TableLayout
         android:layout_width="69dp"
         android:layout_height="63dp"
         android:background="@drawable/reqtangle_rounded"
+        android:gravity="center"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp">
 
@@ -22,10 +23,6 @@
                android:src="@drawable/pharma_2"/>
 
 
-
-
-
     </TableLayout>
-
 
 </LinearLayout>

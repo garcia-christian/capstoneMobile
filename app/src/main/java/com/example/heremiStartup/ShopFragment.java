@@ -1,109 +1,112 @@
 package com.example.heremiStartup;
 
+import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel;
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ShopFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ShopFragment extends Fragment {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+
+public class ShopFragment extends Fragment implements ProductAdapter.OnProdListener, AllProductAdapter.OnAllProdListener {
+
+    LoadingDia loadingDia;
     LinearLayout linear_pharma,linear_category,linear_essential,linear_products;
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    List<modelPharmacy> pharmas = new ArrayList<modelPharmacy>();
+    ProductAdapter productAdapter = new ProductAdapter();
+    AllProductAdapter allProductAdapter = new AllProductAdapter();
+    List<modelPartialPharma> partialPharmas = new ArrayList<modelPartialPharma>();
+    RecyclerView prodrecy,allprodlist;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     public ShopFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ShopFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ShopFragment newInstance(String param1, String param2) {
-        ShopFragment fragment = new ShopFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public ShopFragment(LoadingDia loadingDia) {
+        this.loadingDia = loadingDia;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
     private void getTopPharma() {
-        final View toppharma = getLayoutInflater().inflate(R.layout.layout_toppharma, null, false);
-
-        linear_pharma.addView(toppharma );
 
 
-    }
-    private void getTopPharma2() {
-        final View toppharma = getLayoutInflater().inflate(R.layout.layout_toppharma2, null, false);
+        Call<List<modelPharmacy>> modelpharmacycall = apiClient.getDeclaration().getPharma();
 
-        linear_pharma.addView(toppharma );
+        modelpharmacycall.enqueue(new Callback<List<modelPharmacy>>() {
+            @Override
+            public void onResponse(Call<List<modelPharmacy>> call, Response<List<modelPharmacy>> response) {
+                pharmas = response.body();
+                getTopPharmaUI();
+            }
+
+            @Override
+            public void onFailure(Call<List<modelPharmacy>> call, Throwable t) {
+
+            }
+        });
 
 
-    }
-    private void getTopPharma3() {
-        final View toppharma = getLayoutInflater().inflate(R.layout.layout_toppharma3, null, false);
-
-        linear_pharma.addView(toppharma );
-
-
-    }
-    private void getTopPharma4() {
-        final View toppharma = getLayoutInflater().inflate(R.layout.layout_toppharma4, null, false);
-
-        linear_pharma.addView(toppharma );
 
 
     }
-    private void getTopPharma5() {
-        final View toppharma = getLayoutInflater().inflate(R.layout.layout_toppharma5, null, false);
 
-        linear_pharma.addView(toppharma );
+    private void getTopPharmaUI() {
+      for(int i =0; i<pharmas.size();i++){
+          final View toppharma = getLayoutInflater().inflate(R.layout.layout_toppharma, null, false);
+          ImageView pharmapic = toppharma.findViewById(R.id.toppharm_pic);
 
+          linear_pharma.addView(toppharma );
+          loadPharma(pharmas.get(i),toppharma);
+
+      }
 
     }
-    private void getTopPharma6() {
-        final View toppharma = getLayoutInflater().inflate(R.layout.layout_toppharma6, null, false);
 
-        linear_pharma.addView(toppharma );
+    private void loadPharma(modelPharmacy modelPharmacy, View toppharma) {
+        toppharma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-
+                Intent i = new Intent(getContext(),pharmacyPage.class);
+                i.putExtra("pharmaID",modelPharmacy.getPharmacy_id());
+                startActivity(i);
+            }
+        });
+    }
+    private void loadPharma(modelPartialPharma modelPartialPharma,View view ){
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println(modelPartialPharma.getPharmacy_id());
+                Intent i = new Intent(getContext(),pharmacyPage.class);
+                i.putExtra("pharmaID",modelPartialPharma.getPharmacy_id());
+                startActivity(i);
+            }
+        });
     }
     private void getCategory() {
         final View category = getLayoutInflater().inflate(R.layout.layout_categories, null, false);
@@ -141,27 +144,19 @@ public class ShopFragment extends Fragment {
 
     }
     private void getEssentials() {
-        final View essential = getLayoutInflater().inflate(R.layout.layout_essentials, null, false);
+        LoadData data = new LoadData(productAdapter);
+        productAdapter = new ProductAdapter(getContext(),LoadData.prod, this);
 
-        linear_essential.addView(essential );
+        prodrecy.setAdapter(productAdapter);
 
-    }
-    private void getEssentials2() {
-        final View essential = getLayoutInflater().inflate(R.layout.layout_essentials2, null, false);
-
-        linear_essential.addView(essential );
 
     }
-    private void getEssentials3() {
-        final View essential = getLayoutInflater().inflate(R.layout.layout_essentials3, null, false);
 
-        linear_essential.addView(essential );
-
-    }
     private void getProducts() {
-        final View products = getLayoutInflater().inflate(R.layout.layout_products, null, false);
+        LoadData data = new LoadData(productAdapter);
+        allProductAdapter = new AllProductAdapter(getContext(),LoadData.allprod,this);
 
-        linear_products.addView(products );
+        allprodlist.setAdapter(allProductAdapter);
 
     }
     private void getProducts2() {
@@ -189,15 +184,24 @@ public class ShopFragment extends Fragment {
         list.add(new CarouselItem(R.drawable.ad_2));
         carousel.setData(list);
         linear_pharma = parent.findViewById(R.id.toparma_linear);
-        linear_essential = parent.findViewById(R.id.essentials_list_shop);
+        prodrecy = parent.findViewById(R.id.essentials_list_shop);
+        allprodlist = parent.findViewById(R.id.products_list_shop);
+
+
         linear_category= parent.findViewById(R.id.categories_layout);
-        linear_products= parent.findViewById(R.id.products_list_shop);
+
+
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(this.getContext());
+        layoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        prodrecy.setLayoutManager(layoutManager2);
+        allprodlist.setLayoutManager(layoutManager);
+
+
         getTopPharma();
-        getTopPharma2();
-        getTopPharma3();
-        getTopPharma4();
-        getTopPharma5();
-        getTopPharma6();
+
         getCategory();
         getCategory2();
         getCategory3();
@@ -205,13 +209,118 @@ public class ShopFragment extends Fragment {
         getCategory5();
         getCategory();
         getEssentials();
-        getEssentials2();
-        getEssentials3();
-        getEssentials();
+
         getProducts();
-        getProducts2();
-        getProducts3();
-        getProducts();
+
+        loadingDia.dismissDialog();
         return parent;
+    }
+
+    @Override
+    public void onProdClick(int position) {
+        showBottomDialog(LoadData.prod.get(position));
+
+    }
+
+    private void showBottomDialog(modelProduct product){
+        final Dialog dialog = new Dialog(getContext());
+        // LoadData data = new LoadData(productAdapter);
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.layout_bottom_dialog);
+
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+        LinearLayout pharmalist = (LinearLayout) dialog.findViewById(R.id.layoutEdit);
+        ImageView prod_img = dialog.findViewById(R.id.prod_img);
+        TextView brand_name = dialog.findViewById(R.id.brand_name);
+        TextView generic_name = dialog.findViewById(R.id.generic_name);
+        TextView pricerange = dialog.findViewById(R.id.price_range);
+        pricerange.setText("₱"+df.format(product.getMin())+" - "+"₱"+df.format(product.getMax()));
+        brand_name.setText(product.getGlobal_brand_name());
+        generic_name.setText(product.getGlobal_generic_name());
+        Glide.with(dialog.getContext()).load(apiClient.BASEURL+product.getImage()).into(prod_img);
+        Call<List<modelPartialPharma>> modelPartialPharmaCall = apiClient.getDeclaration().getAvailablePharma(product.getGlobal_med_id());
+
+        modelPartialPharmaCall.enqueue(new Callback<List<modelPartialPharma>>() {
+            @Override
+            public void onResponse(Call<List<modelPartialPharma>> call, Response<List<modelPartialPharma>> response) {
+                partialPharmas = response.body();
+                pharmaLoader(dialog, pharmalist);
+            }
+
+            @Override
+            public void onFailure(Call<List<modelPartialPharma>> call, Throwable t) {
+
+            }
+        });
+
+
+
+
+    }
+
+    private void pharmaLoader(Dialog dialog, LinearLayout pharmalist) {
+        for(int i=0;i<partialPharmas.size();i++){
+            modelPartialPharma modelPartialPharma = new modelPartialPharma();
+            modelPartialPharma = partialPharmas.get(i);
+            final View pharm = dialog.getLayoutInflater().inflate(R.layout.layout_available_pharma_list,null, false);
+            TextView pharm_name = pharm.findViewById(R.id.pharma_name);
+            TextView price = pharm.findViewById(R.id.prod_price);
+            pharm_name.setText(partialPharmas.get(i).pharmacy_name);
+            price.setText("20.00km"+" • "+"₱"+df.format(partialPharmas.get(i).getMed_price()));
+            pharmalist.addView(pharm);
+            loadPharma(modelPartialPharma,pharm);
+        }
+    }
+
+    @Override
+    public void onAllProdClick(int position) {
+        showBottomDialog(LoadData.allprod.get(position));
+    }
+
+    private void showBottomDialog(modelAllProduct product) {
+        final Dialog dialog = new Dialog(getContext());
+        // LoadData data = new LoadData(productAdapter);
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.layout_bottom_dialog);
+
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+        LinearLayout pharmalist = (LinearLayout) dialog.findViewById(R.id.layoutEdit);
+        ImageView prod_img = dialog.findViewById(R.id.prod_img);
+        TextView brand_name = dialog.findViewById(R.id.brand_name);
+        TextView generic_name = dialog.findViewById(R.id.generic_name);
+        TextView pricerange = dialog.findViewById(R.id.price_range);
+        pricerange.setText("₱"+df.format(product.getMin())+" - "+"₱"+df.format(product.getMax()));
+        brand_name.setText(product.getGlobal_brand_name());
+        generic_name.setText(product.getGlobal_generic_name());
+        Glide.with(dialog.getContext()).load(apiClient.BASEURL+product.getImage()).into(prod_img);
+        Call<List<modelPartialPharma>> modelPartialPharmaCall = apiClient.getDeclaration().getAvailablePharma(product.getGlobal_med_id());
+
+        modelPartialPharmaCall.enqueue(new Callback<List<modelPartialPharma>>() {
+            @Override
+            public void onResponse(Call<List<modelPartialPharma>> call, Response<List<modelPartialPharma>> response) {
+                partialPharmas = response.body();
+                pharmaLoader(dialog, pharmalist);
+            }
+
+            @Override
+            public void onFailure(Call<List<modelPartialPharma>> call, Throwable t) {
+
+            }
+        });
+
+
+
     }
 }
