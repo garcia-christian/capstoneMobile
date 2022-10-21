@@ -68,7 +68,7 @@ public class Cart extends AppCompatActivity{
 
         if(mGeoApiContext == null){
             mGeoApiContext = new GeoApiContext.Builder()
-                    .apiKey("AIzaSyBK5v0ITOtgyaJAY1JfLdb_vfQYEDDHiBI")
+                    .apiKey(BuildConfig.MAPS_API_KEY)
                     .build();
         }
         checkout.setOnClickListener(new View.OnClickListener() {

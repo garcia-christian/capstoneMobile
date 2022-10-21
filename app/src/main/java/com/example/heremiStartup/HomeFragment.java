@@ -256,7 +256,7 @@ public class HomeFragment extends Fragment implements ProductAdapter.OnProdListe
          getLocation();
         if(mGeoApiContext == null){
             mGeoApiContext = new GeoApiContext.Builder()
-                    .apiKey("AIzaSyBK5v0ITOtgyaJAY1JfLdb_vfQYEDDHiBI")
+                    .apiKey(BuildConfig.MAPS_API_KEY)
                     .build();
         }
         loadingDia.dismissDialog();

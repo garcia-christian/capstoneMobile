@@ -176,7 +176,7 @@ public class LocationFragment extends Fragment implements
                 mapView.getMapAsync(this);
                 if(mGeoApiContext == null){
                     mGeoApiContext = new GeoApiContext.Builder()
-                            .apiKey("AIzaSyBK5v0ITOtgyaJAY1JfLdb_vfQYEDDHiBI")
+                            .apiKey(BuildConfig.MAPS_API_KEY)
                             .build();
                 }
 
