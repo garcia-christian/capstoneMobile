@@ -6,6 +6,7 @@ public class modelPharmaProducts {
     private String global_brand_name;
     private String global_generic_name;
     private String med_cat_desc;
+    private String class_desc;
     private String image;
     private double med_qty;
     private double med_price;
@@ -13,12 +14,13 @@ public class modelPharmaProducts {
     public modelPharmaProducts() {
     }
 
-    public modelPharmaProducts(int med_id, int global_med_id, String global_brand_name, String global_generic_name, String med_cat_desc, String image, double med_qty, double med_price) {
+    public modelPharmaProducts(int med_id, int global_med_id, String global_brand_name, String global_generic_name, String med_cat_desc, String class_desc, String image, double med_qty, double med_price) {
         this.med_id = med_id;
         this.global_med_id = global_med_id;
         this.global_brand_name = global_brand_name;
         this.global_generic_name = global_generic_name;
         this.med_cat_desc = med_cat_desc;
+        this.class_desc = class_desc;
         this.image = image;
         this.med_qty = med_qty;
         this.med_price = med_price;
@@ -32,6 +34,7 @@ public class modelPharmaProducts {
                 ", global_brand_name='" + global_brand_name + '\'' +
                 ", global_generic_name='" + global_generic_name + '\'' +
                 ", med_cat_desc='" + med_cat_desc + '\'' +
+                ", class_desc='" + class_desc + '\'' +
                 ", image='" + image + '\'' +
                 ", med_qty=" + med_qty +
                 ", med_price=" + med_price +
@@ -76,6 +79,14 @@ public class modelPharmaProducts {
 
     public void setMed_cat_desc(String med_cat_desc) {
         this.med_cat_desc = med_cat_desc;
+    }
+
+    public String getClass_desc() {
+        return class_desc;
+    }
+
+    public void setClass_desc(String class_desc) {
+        this.class_desc = class_desc;
     }
 
     public String getImage() {

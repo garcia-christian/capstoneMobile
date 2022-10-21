@@ -176,6 +176,16 @@ public class ShopFragment extends Fragment implements ProductAdapter.OnProdListe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View parent = inflater.inflate(R.layout.fragment_shop, container, false);
+        ImageView cart =  parent.findViewById(R.id.shopbtn_shop);
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent c = new Intent(getContext(), Cart.class);
+                startActivity(c);
+            }
+        });
+
+
 
         ImageCarousel carousel = parent.findViewById(R.id.carousel);
         carousel.registerLifecycle(getLifecycle());
@@ -240,9 +250,13 @@ public class ShopFragment extends Fragment implements ProductAdapter.OnProdListe
         TextView brand_name = dialog.findViewById(R.id.brand_name);
         TextView generic_name = dialog.findViewById(R.id.generic_name);
         TextView pricerange = dialog.findViewById(R.id.price_range);
+        TextView classification = dialog.findViewById(R.id.classification);
+        TextView category = dialog.findViewById(R.id.bottom_medcat);
         pricerange.setText("₱"+df.format(product.getMin())+" - "+"₱"+df.format(product.getMax()));
         brand_name.setText(product.getGlobal_brand_name());
         generic_name.setText(product.getGlobal_generic_name());
+        category.setText("Category: "+product.getMed_cat_desc());
+        classification.setText("Classification: "+product.getClass_desc());
         Glide.with(dialog.getContext()).load(apiClient.BASEURL+product.getImage()).into(prod_img);
         Call<List<modelPartialPharma>> modelPartialPharmaCall = apiClient.getDeclaration().getAvailablePharma(product.getGlobal_med_id());
 
@@ -268,11 +282,14 @@ public class ShopFragment extends Fragment implements ProductAdapter.OnProdListe
         for(int i=0;i<partialPharmas.size();i++){
             modelPartialPharma modelPartialPharma = new modelPartialPharma();
             modelPartialPharma = partialPharmas.get(i);
+
             final View pharm = dialog.getLayoutInflater().inflate(R.layout.layout_available_pharma_list,null, false);
             TextView pharm_name = pharm.findViewById(R.id.pharma_name);
             TextView price = pharm.findViewById(R.id.prod_price);
+
             pharm_name.setText(partialPharmas.get(i).pharmacy_name);
             price.setText("20.00km"+" • "+"₱"+df.format(partialPharmas.get(i).getMed_price()));
+
             pharmalist.addView(pharm);
             loadPharma(modelPartialPharma,pharm);
         }
@@ -301,9 +318,13 @@ public class ShopFragment extends Fragment implements ProductAdapter.OnProdListe
         TextView brand_name = dialog.findViewById(R.id.brand_name);
         TextView generic_name = dialog.findViewById(R.id.generic_name);
         TextView pricerange = dialog.findViewById(R.id.price_range);
+        TextView classification = dialog.findViewById(R.id.classification);
+        TextView category = dialog.findViewById(R.id.bottom_medcat);
         pricerange.setText("₱"+df.format(product.getMin())+" - "+"₱"+df.format(product.getMax()));
         brand_name.setText(product.getGlobal_brand_name());
         generic_name.setText(product.getGlobal_generic_name());
+        category.setText("Category: "+product.getMed_cat_desc());
+        classification.setText("Classification: "+product.getClass_desc());
         Glide.with(dialog.getContext()).load(apiClient.BASEURL+product.getImage()).into(prod_img);
         Call<List<modelPartialPharma>> modelPartialPharmaCall = apiClient.getDeclaration().getAvailablePharma(product.getGlobal_med_id());
 

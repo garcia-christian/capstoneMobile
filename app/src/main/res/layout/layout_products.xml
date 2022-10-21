@@ -35,15 +35,28 @@
     <TextView
         android:id="@+id/med_generic"
         android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:lines="3"
-        android:maxLines="3"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:maxLines="1"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="4dp"
-        android:text="Medicine Brand"
+        android:text="Medicine generic"
         android:textSize="15dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/v1"
         app:layout_constraintTop_toBottomOf="@+id/med_brand" />
+
+    <TextView
+        android:id="@+id/med_category"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:maxLines="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="4dp"
+        android:text="Medicine cat"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/v1"
+        app:layout_constraintTop_toBottomOf="@+id/med_generic" />
 
     <TextView
         android:id="@+id/price_etc"
@@ -54,7 +67,7 @@
         android:layout_marginTop="10dp"
         android:textColor="@color/price_red"
         app:layout_constraintStart_toStartOf="@+id/v1"
-        app:layout_constraintTop_toBottomOf="@+id/med_generic" />
+        app:layout_constraintTop_toBottomOf="@+id/med_category" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v1"

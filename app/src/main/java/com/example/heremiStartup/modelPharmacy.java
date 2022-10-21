@@ -4,8 +4,18 @@ public class modelPharmacy {
     int pharmacy_id;
     String pharmacy_name;
     String pharmacy_location;
+    String pharmacy_lat;
+    String pharmacy_lng;
 
     public modelPharmacy() {
+    }
+
+    public modelPharmacy(int pharmacy_id, String pharmacy_name, String pharmacy_location, String pharmacy_lat, String pharmacy_lng) {
+        this.pharmacy_id = pharmacy_id;
+        this.pharmacy_name = pharmacy_name;
+        this.pharmacy_location = pharmacy_location;
+        this.pharmacy_lat = pharmacy_lat;
+        this.pharmacy_lng = pharmacy_lng;
     }
 
     public int getPharmacy_id() {
@@ -32,9 +42,19 @@ public class modelPharmacy {
         this.pharmacy_location = pharmacy_location;
     }
 
-    public modelPharmacy(int pharmacy_id, String pharmacy_name, String pharmacy_location) {
-        this.pharmacy_id = pharmacy_id;
-        this.pharmacy_name = pharmacy_name;
-        this.pharmacy_location = pharmacy_location;
+    public String getPharmacy_lat() {
+        return pharmacy_lat;
+    }
+
+    public void setPharmacy_lat(String pharmacy_lat) {
+        this.pharmacy_lat = pharmacy_lat;
+    }
+
+    public String getPharmacy_lng() {
+        return pharmacy_lng;
+    }
+
+    public void setPharmacy_lng(String pharmacy_lng) {
+        this.pharmacy_lng = pharmacy_lng;
     }
 }

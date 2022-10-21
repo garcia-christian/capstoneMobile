@@ -74,10 +74,11 @@
 
                 <TextView
                     android:id="@+id/address"
-                    android:layout_width="wrap_content"
+                    android:maxLines="1"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="3dp"
-                    android:text="Somewhere, Davao City"
+                    android:text="Calculating location..."
                     android:textColor="@color/white"
                     android:textSize="16dp"
                     app:layout_constraintBottom_toTopOf="@+id/guideline5"

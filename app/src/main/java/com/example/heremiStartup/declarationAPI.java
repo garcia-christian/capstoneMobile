@@ -2,8 +2,11 @@ package com.example.heremiStartup;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -54,4 +57,14 @@ public interface declarationAPI {
 
     @GET("/mobileshop/get-pharmaproducts/{id}")
     Call<List<modelPharmaProducts>>getPharmaProducts(@Path("id") int id);
+
+    @POST("/mobileshop/add-cart")
+    Call<List<modelCart>> saveCart(@Body modelCart modelCart);
+
+    @GET("/mobileshop/get-cart/")
+    Call<List<modelCartDetails>> getCart();
+
+
+    @DELETE("/mobileshop/clear-cart/{id}")
+    Call<ResponseBody> deleteCart(@Path("id") int bookId);
 }

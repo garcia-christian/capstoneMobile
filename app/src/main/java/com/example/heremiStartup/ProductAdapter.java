@@ -58,6 +58,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
             prodName = itemView.findViewById(R.id.essentials_label1);
             prodPic = itemView.findViewById(R.id.prod_pic);
             price = itemView.findViewById(R.id.essentials_price);
+
             this.onProdListener = onProdListener;
             itemView.setOnClickListener(this);
 
@@ -68,6 +69,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
             prodName.setText(prod.getGlobal_brand_name());
             Glide.with(context).load(apiClient.BASEURL+prod.getImage()).into(prodPic);
             price.setText("₱"+df.format(prod.getMin())+" - "+"₱"+df.format(prod.getMax()));
+
         }
 
         @Override

@@ -17,7 +17,7 @@
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:textColor="@color/black"
-        android:text="Tian Tian Pharmacy"
+        android:text=""
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,11 +26,23 @@
         android:id="@+id/prod_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:text="Loading..."
+        android:textColor="@color/black_default"
+        android:textSize="17dp"
+        app:layout_constraintStart_toEndOf="@+id/prod_dist"
+        app:layout_constraintTop_toBottomOf="@id/pharma_name" />
+
+    <TextView
+        android:id="@+id/prod_dist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginLeft="10dp"
 
         android:textColor="@color/black_default"
-        android:text="20.0km • ₱10.22"
+        android:text=""
         android:textSize="17dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pharma_name" />

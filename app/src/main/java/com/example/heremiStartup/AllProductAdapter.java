@@ -50,7 +50,7 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.Pr
     }
 
     public class ProductHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView prodName,prodgeneric,price;
+        TextView prodName,prodgeneric,price,category;
         ImageView prodPic;
         OnAllProdListener onProdListener;
         public ProductHolder(@NonNull View itemView, OnAllProdListener onProdListener) {
@@ -59,6 +59,7 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.Pr
             prodPic = itemView.findViewById(R.id.imageView);
             price = itemView.findViewById(R.id.price_etc);
             prodgeneric = itemView.findViewById(R.id.med_generic);
+            category = itemView.findViewById(R.id.med_category);
             this.onProdListener = onProdListener;
             itemView.setOnClickListener(this);
 
@@ -70,6 +71,7 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.Pr
             Glide.with(context).load(apiClient.BASEURL+prod.getImage()).into(prodPic);
             price.setText("₱"+df.format(prod.getMin())+" - "+"₱"+df.format(prod.getMax()));
             prodgeneric.setText(prod.getGlobal_generic_name());
+            category.setText(prod.getMed_cat_desc());
         }
 
         @Override

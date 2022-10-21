@@ -19,23 +19,23 @@ public class PharmacyProductsAdapter extends RecyclerView.Adapter<PharmacyProduc
 
     public ArrayList<modelPharmaProducts> prod;
     private Context context;
-    private OnProdListener onProdListener;
+    private OnPharmaProdListener onPharmaProdListener;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
     public PharmacyProductsAdapter() {
     }
 
-    public PharmacyProductsAdapter(ArrayList<modelPharmaProducts> prod, Context context, OnProdListener onProdListener) {
+    public PharmacyProductsAdapter(ArrayList<modelPharmaProducts> prod, Context context, OnPharmaProdListener onPharmaProdListener) {
         this.prod = prod;
         this.context = context;
-        this.onProdListener = onProdListener;
+        this.onPharmaProdListener = onPharmaProdListener;
     }
 
     @NonNull
     @Override
     public PharmacyProductsAdapter.ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_essentials2, parent, false);
-        return new PharmacyProductsAdapter.ItemHolder(view, onProdListener);
+        return new PharmacyProductsAdapter.ItemHolder(view, onPharmaProdListener);
     }
 
     @Override
@@ -52,14 +52,15 @@ public class PharmacyProductsAdapter extends RecyclerView.Adapter<PharmacyProduc
     public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView prodName, price,prodgeneric;
         ImageView prodPic;
-        OnProdListener onProdListener;
-        public ItemHolder(@NonNull View itemView, OnProdListener onProdListener) {
+        OnPharmaProdListener onPharmaProdListener;
+        public ItemHolder(@NonNull View itemView, OnPharmaProdListener onPharmaProdListener) {
             super(itemView);
             prodName = itemView.findViewById(R.id.essentials_label2);
             prodPic = itemView.findViewById(R.id.allprod_image);
             price = itemView.findViewById(R.id.essentials_price2);
             prodgeneric = itemView.findViewById(R.id.generic_name);
-            this.onProdListener = onProdListener;
+            prodgeneric = itemView.findViewById(R.id.generic_name);
+            this.onPharmaProdListener = onPharmaProdListener;
             itemView.setOnClickListener(this);
         }
 
@@ -72,10 +73,10 @@ public class PharmacyProductsAdapter extends RecyclerView.Adapter<PharmacyProduc
 
         @Override
         public void onClick(View view) {
-
+        onPharmaProdListener.OnPharmaProdClick(getAdapterPosition());
         }
     }
-    public interface OnProdListener{
-        void onProdClick(int position);
+    public interface OnPharmaProdListener{
+        void OnPharmaProdClick(int position);
     }
 }

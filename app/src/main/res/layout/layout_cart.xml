@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/boarder_bottom">
+
+    <ImageView
+        android:id="@+id/med_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/med_2"
+        app:layout_constraintBottom_toTopOf="@+id/guideline16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/med_name_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Biogesic"
+        android:textSize="20dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/med_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/med_generic_cart"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:text="Paracetamol"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/med_image"
+        app:layout_constraintTop_toBottomOf="@id/med_name_cart" />
+
+
+    <TextView
+        android:id="@+id/med_category_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:text="Tablet"
+        android:textSize="13dp"
+        app:layout_constraintStart_toEndOf="@+id/med_image"
+        app:layout_constraintTop_toBottomOf="@+id/med_generic_cart" />
+
+    <TextView
+        android:id="@+id/med_classification_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:text="Perscription Medicine"
+        android:textSize="13dp"
+        app:layout_constraintStart_toEndOf="@+id/med_image"
+        app:layout_constraintTop_toBottomOf="@+id/med_category_cart" />
+
+    <TextView
+        android:id="@+id/med_price_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="P14.00"
+        android:textColor="@color/price_red"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/qty_layout"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/qty_layout"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline16"
+        app:layout_constraintEnd_toEndOf="parent">
+    <ImageView
+        android:id="@+id/decrement"
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_baseline_arrow_left_24"/>
+        <TextView
+            android:id="@+id/cart_qty"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="01"/>
+        <ImageView
+            android:id="@+id/increment"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_arrow_right_24"/>
+
+
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="100dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

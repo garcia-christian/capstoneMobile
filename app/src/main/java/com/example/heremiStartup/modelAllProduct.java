@@ -6,32 +6,35 @@ public class modelAllProduct {
     private String global_brand_name;
     private String global_generic_name;
     private String med_cat_desc;
+    private String class_desc;
     private int total;
     private String image;
     private double min;
     private double max;
 
-    public modelAllProduct(int global_med_id, String global_brand_name, String global_generic_name, String med_cat_desc, int total, String image, double min, double max) {
+    public modelAllProduct() {
+    }
+
+    public modelAllProduct(int global_med_id, String global_brand_name, String global_generic_name, String med_cat_desc, String class_desc, int total, String image, double min, double max) {
         this.global_med_id = global_med_id;
         this.global_brand_name = global_brand_name;
         this.global_generic_name = global_generic_name;
         this.med_cat_desc = med_cat_desc;
+        this.class_desc = class_desc;
         this.total = total;
         this.image = image;
         this.min = min;
         this.max = max;
     }
 
-    public modelAllProduct() {
-    }
-
     @Override
     public String toString() {
-        return "modelProduct{" +
+        return "modelAllProduct{" +
                 "global_med_id=" + global_med_id +
                 ", global_brand_name='" + global_brand_name + '\'' +
                 ", global_generic_name='" + global_generic_name + '\'' +
                 ", med_cat_desc='" + med_cat_desc + '\'' +
+                ", class_desc='" + class_desc + '\'' +
                 ", total=" + total +
                 ", image='" + image + '\'' +
                 ", min=" + min +
@@ -69,6 +72,14 @@ public class modelAllProduct {
 
     public void setMed_cat_desc(String med_cat_desc) {
         this.med_cat_desc = med_cat_desc;
+    }
+
+    public String getClass_desc() {
+        return class_desc;
+    }
+
+    public void setClass_desc(String class_desc) {
+        this.class_desc = class_desc;
     }
 
     public int getTotal() {

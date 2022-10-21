@@ -25,7 +25,7 @@ public class pharmacyPage extends AppCompatActivity {
     private ViewPager viewPager;
     private TextView name, loc;
     private Integer pharmacyID;
-    private ImageView backbtn;
+    private ImageView backbtn, cartBtn;
     modelPharmacy modelPharmacy = new modelPharmacy();
 
     @Override
@@ -38,6 +38,15 @@ public class pharmacyPage extends AppCompatActivity {
         viewPager = findViewById(R.id.allProdView);
         tabLayout.setupWithViewPager(viewPager);
         backbtn = findViewById(R.id.back_btn_med);
+        cartBtn = findViewById(R.id.shopbtn);
+
+        cartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent c = new Intent(pharmacyPage.this, Cart.class);
+                startActivity(c);
+            }
+        });
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +56,7 @@ public class pharmacyPage extends AppCompatActivity {
         });
 
         Intent i = getIntent();
-       pharmacyID =  i.getIntExtra("pharmaID",4);
+       pharmacyID =  i.getIntExtra("pharmaID",10);
        fetchData(pharmacyID);
 
 

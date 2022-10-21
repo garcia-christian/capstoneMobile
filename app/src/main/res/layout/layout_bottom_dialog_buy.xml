@@ -77,42 +77,99 @@
         app:layout_constraintStart_toEndOf="@+id/prod_img"
         app:layout_constraintTop_toBottomOf="@+id/bottom_medcat" />
 
+
     <TextView
         android:id="@+id/price_range"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="12dp"
         android:layout_weight="1"
         android:gravity="center"
         android:paddingTop="5dp"
-        android:text="P10.22 - P13.34"
+        android:text="P10.22"
         android:textColor="@color/price_red"
         android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/prod_img"
         app:layout_constraintTop_toBottomOf="@+id/classification" />
 
-
     <TextView
         android:id="@+id/avaialbleinpharmatxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Available in:"
+        android:text="Value Plus Pharmacy: 10km"
         android:layout_marginTop="10dp"
         android:textSize="15dp"
 
         android:textColor="@color/black_default"
-        app:layout_constraintTop_toBottomOf="@+id/prod_img"
-        tools:layout_editor_absoluteX="10dp" />
+        app:layout_constraintTop_toBottomOf="@+id/prod_img" />
+
+    <TextView
+        android:id="@+id/qtyytxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity: "
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="12dp"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/qty_layout"
+        app:layout_constraintTop_toBottomOf="@+id/avaialbleinpharmatxt" />
 
     <LinearLayout
-        android:id="@+id/layoutEdit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avaialbleinpharmatxt"></LinearLayout>
+        android:id="@+id/qty_layout"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="14dp"
+        android:layout_marginRight="19dp"
+        app:layout_constraintEnd_toStartOf="@+id/materialButton3"
+        app:layout_constraintTop_toBottomOf="@+id/avaialbleinpharmatxt">
 
+        <ImageView
+            android:id="@+id/qtysub"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_arrow_left_24" />
+
+        <TextView
+            android:id="@+id/qtycontext"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="1" />
+
+        <ImageView
+            android:id="@+id/qtyadd"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_arrow_right_24" />
+
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/sqr4c"
+        android:text="Buy Now"
+        android:textColor="@color/white"
+        android:textSize="10dp"
+        app:backgroundTint="@color/pink_red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avaialbleinpharmatxt" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/sqr4c"
+        android:text="Add to Cart"
+        android:textColor="@color/white"
+        android:textSize="10dp"
+        app:backgroundTint="@color/yellow_btn"
+        app:layout_constraintEnd_toStartOf="@id/materialButton2"
+        app:layout_constraintTop_toBottomOf="@+id/avaialbleinpharmatxt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
