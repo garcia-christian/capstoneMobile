@@ -14,14 +14,31 @@ public class modelReminder {
     private boolean sun;
     private String notes;
     private boolean active;
+    private int customer;
 
+    @Override
+    public String toString() {
+        return "modelReminder{" +
+                "med_id=" + med_id +
+                ", dose=" + dose +
+                ", mon=" + mon +
+                ", tue=" + tue +
+                ", wed=" + wed +
+                ", thu=" + thu +
+                ", fri=" + fri +
+                ", sat=" + sat +
+                ", sun=" + sun +
+                ", notes='" + notes + '\'' +
+                ", active=" + active +
+                ", customer=" + customer +
+                '}';
+    }
 
     public modelReminder() {
     }
 
-    public modelReminder(int remID, int medID, int dose, boolean mon, boolean tue, boolean wed, boolean thu, boolean fri, boolean sat, boolean sun, String notes, boolean active, String updateTime) {
-
-        this.med_id = medID;
+    public modelReminder(int med_id, int dose, boolean mon, boolean tue, boolean wed, boolean thu, boolean fri, boolean sat, boolean sun, String notes, boolean active, int customer) {
+        this.med_id = med_id;
         this.dose = dose;
         this.mon = mon;
         this.tue = tue;
@@ -32,24 +49,8 @@ public class modelReminder {
         this.sun = sun;
         this.notes = notes;
         this.active = active;
-
+        this.customer = customer;
     }
-
-    @Override
-    public String toString() {
-        String mon = (isMon() ? "Mon " : "");
-        String tue = (isTue() ? "Tue " : "");
-        String wed = (isWed() ? "Wed " : "");
-        String thu = (isThu() ? "Thu " : "");
-        String fri = (isFri() ? "Fri " : "");
-        String sat = (isSat() ? "Sat " : "");
-        String sun = (isSun() ? "Sun " : "");
-        if (isMon() && isTue() && isWed() && isThu() && isFri() && isSat() && isSun())
-            return "Everyday";
-
-        return mon + tue + wed + thu + fri + sat + sun;
-    }
-
 
     public int getMed_id() {
         return med_id;
@@ -58,7 +59,6 @@ public class modelReminder {
     public void setMed_id(int med_id) {
         this.med_id = med_id;
     }
-
 
     public int getDose() {
         return dose;
@@ -140,4 +140,11 @@ public class modelReminder {
         this.active = active;
     }
 
+    public int getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(int customer) {
+        this.customer = customer;
+    }
 }

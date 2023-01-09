@@ -3,9 +3,14 @@ package com.example.heremiStartup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -22,9 +27,11 @@ import android.widget.Toast;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -118,7 +125,7 @@ public class setReminder extends AppCompatActivity {
         try {
             reminderModel = new modelReminder();
             modelMedicineRes medId = (modelMedicineRes) medsSpinner.getSelectedItem();
-            reminderModel.setMed_id(medId.getMed_id());
+            reminderModel.setMed_id(medId.getC_med_id());
             reminderModel.setDose(Integer.parseInt(dose.getText().toString()));
             reminderModel.setMon(mon.isChecked());
             reminderModel.setTue(tue.isChecked());
@@ -129,6 +136,7 @@ public class setReminder extends AppCompatActivity {
             reminderModel.setSun(sun.isChecked());
             reminderModel.setNotes(notes.getText().toString());
             reminderModel.setActive(activesw.isChecked());
+            reminderModel.setCustomer(MainActivity.UserID);
             Call<List<modelReminderRes>> modelReminderCall = apiClient.getDeclaration().saveRemidner(reminderModel);
 
             modelReminderCall.enqueue(new Callback<List<modelReminderRes>>() {
@@ -137,6 +145,17 @@ public class setReminder extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         if (timeRead(response.body().get(0))) {
                             for (int cn = 0; cn < timeArray.size(); cn++) {
+
+
+                                    String[] spilit = timeArray.get(cn).getTime().split(":");
+                                    if(Integer.parseInt(spilit[0]) > 12){
+                                        setRem(Integer.parseInt(spilit[0])+12, Integer.parseInt(spilit[1]),0);
+                                    }else{
+                                        setRem(Integer.parseInt(spilit[0]), Integer.parseInt(spilit[1]),0);
+                                    }
+
+
+
                                 Call<List<modelTimeRes>> timecall = apiClient.getDeclaration().saveTime(timeArray.get(cn));
                                 timecall.enqueue(new Callback<List<modelTimeRes>>() {
                                     @Override
@@ -210,13 +229,14 @@ public class setReminder extends AppCompatActivity {
 
 
     private void loadMeds() {
-        Call<List<modelMedicineRes>> modelMedicineCall = apiClient.getDeclaration().getMedicine();
+        Call<List<modelMedicineRes>> modelMedicineCall = apiClient.getDeclaration().getMedicine(MainActivity.UserID);
 
         modelMedicineCall.enqueue(new Callback<List<modelMedicineRes>>() {
             @Override
             public void onResponse(Call<List<modelMedicineRes>> call, Response<List<modelMedicineRes>> response) {
                 if (response.isSuccessful()) {
                     List<modelMedicineRes> res = response.body();
+
                     allmeds = new ArrayAdapter<modelMedicineRes>(setReminder.this, android.R.layout.simple_spinner_item, res);
 
                     medsSpinner.setAdapter(allmeds);
@@ -282,4 +302,35 @@ public class setReminder extends AppCompatActivity {
 
 
     }
+    private void setRem(int hr, int min, int sec) {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY,hr);
+        calendar.set(Calendar.MINUTE, min);
+        calendar.set(Calendar.SECOND, sec);
+
+        if (Calendar.getInstance().after(calendar)) {
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+        }
+        Intent intent = new Intent(setReminder.this, MemoBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+        }
+
+    }
+    // Replace with KK:mma if you want 0-11 interval
+    private static final DateFormat TWELVE_TF = new SimpleDateFormat("hh:mma");
+    // Replace with kk:mm if you want 1-24 interval
+    private static final DateFormat TWENTY_FOUR_TF = new SimpleDateFormat("HH:mm");
+
+    public static String convertTo24HoursFormat(String twelveHourTime)
+            throws ParseException {
+        return TWENTY_FOUR_TF.format(
+                TWELVE_TF.parse(twelveHourTime));
+    }
+
 }

@@ -6,7 +6,7 @@ public class modelPharmacy {
     String pharmacy_location;
     String pharmacy_lat;
     String pharmacy_lng;
-
+    String logo;
     public modelPharmacy() {
     }
 
@@ -16,6 +16,14 @@ public class modelPharmacy {
         this.pharmacy_location = pharmacy_location;
         this.pharmacy_lat = pharmacy_lat;
         this.pharmacy_lng = pharmacy_lng;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
 
     public int getPharmacy_id() {

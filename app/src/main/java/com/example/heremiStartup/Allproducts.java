@@ -175,7 +175,7 @@ public class Allproducts extends Fragment implements PharmacyProductsAdapter.OnP
     }
 
     private void addItemToCart(modelPharmaProducts product, int qty, Dialog dialog) {
-        modelCart = new modelCart(product.getMed_id(),product.getGlobal_med_id(),pharmaID,qty,1);
+        modelCart = new modelCart(product.getMed_id(),product.getGlobal_med_id(),pharmaID,qty,MainActivity.UserID);
         Call<List<modelCart>> modelCartCall = apiClient.getDeclaration().saveCart(modelCart);
         modelCartCall.enqueue(new Callback<List<com.example.heremiStartup.modelCart>>() {
             @Override
@@ -223,13 +223,13 @@ public class Allproducts extends Fragment implements PharmacyProductsAdapter.OnP
     }
 
     private void executeWipe(modelPharmaProducts product, int qty, Dialog dialog) {
-       Call<ResponseBody> del = apiClient.getDeclaration().deleteCart(1);
+       Call<ResponseBody> del = apiClient.getDeclaration().deleteCart(MainActivity.UserID);
 
        del.enqueue(new Callback<ResponseBody>() {
            @Override
            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                if (response.isSuccessful()){
-                   Toast.makeText(getContext(), "Cart Wiped", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(getContext(), "Cart Items Replaced", Toast.LENGTH_SHORT).show();
                    addItemToCart(product,quantity,dialog);
                }
            }

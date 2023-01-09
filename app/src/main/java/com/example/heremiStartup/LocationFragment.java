@@ -147,8 +147,8 @@ public class LocationFragment extends Fragment implements
     private void getUpdatingLocation(modelPharmacy modelPharmacy) {
         locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        locationRequest.setInterval(5000);
-        locationRequest.setFastestInterval(3000);
+        locationRequest.setInterval(20);
+        locationRequest.setFastestInterval(20);
 
 
         mupdatingLocation = LocationServices.getFusedLocationProviderClient(getContext());

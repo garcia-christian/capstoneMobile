@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Cart">
-
-
+    android:background="@drawable/background_setrem"
+    tools:context=".Search">
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
@@ -17,15 +16,21 @@
             android:background="@drawable/background_setrem">
 
 
-            <TextView
+            <EditText
                 android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cart"
-                android:textColor="@color/white"
-                android:textSize="21dp"
+                android:layout_width="330dp"
+                android:layout_height="35dp"
+                android:background="@drawable/border_r_20"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@drawable/ic_baseline_search_24"
+                android:drawableTint="@color/black_default"
+                android:hint="Search"
+                android:padding="5dp"
+                android:textColor="@color/black_default"
+                android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/back_btn_med"
+
                 app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
             <ImageView
@@ -33,7 +38,6 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="-6dp"
                 android:src="@drawable/ic_baseline_arrow_back_ios_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline14" />
@@ -52,48 +56,35 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-                <ImageView
-                    android:id="@+id/pharmacyimg"
-                    android:layout_width="30dp"
-                    android:visibility="gone"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:src="@drawable/pharma_2"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Filter:"
+                    android:textSize="18dp"
+                    android:textColor="@color/black_default"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/pharmacyName"
+                <Switch
+                    android:id="@+id/switch1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-
-                    android:text="Loading..."
+                    android:text="Price (lowest)"
                     android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/pharmacyimg"
-                    app:layout_constraintTop_toTopOf="parent" />
-                <TextView
-                    android:id="@+id/pharmacyLoc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/pharmacyName"
-                    app:layout_constraintTop_toTopOf="parent" />
-                <TextView
-                    android:id="@+id/pharmacyKm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/pharmacyLoc"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <Switch
+                    android:id="@+id/switch2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Distance(nearest)"
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/switch1"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -110,7 +101,7 @@
                 app:layout_constraintTop_toBottomOf="@id/pharma_info">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/cart_list"
+                    android:id="@+id/search_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="true">
@@ -123,6 +114,13 @@
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="44dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -141,49 +139,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/totalword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Subotal:  "
-            android:textSize="15dp"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/totalnum" />
-
-        <TextView
-            android:id="@+id/totalnum"
-            android:textStyle="bold"
-            android:textColor="@color/price_red"
-            android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 0"
-            android:textSize="15dp"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/submit_med" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/submit_med"
-            android:layout_width="200dp"
-            android:layout_height="51dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/sqr4c"
-            android:text="Checkout"
-
-            android:layout_marginEnd="10dp"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            app:backgroundTint="@color/pink_red"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

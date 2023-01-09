@@ -1,6 +1,10 @@
 package com.example.heremiStartup;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,24 +18,30 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+
 public class ProfileFragment extends Fragment {
 
-
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+    modelCustomer modelCustomer;
     LinearLayout medlist,remlist,missedrem;
     LoadingDia loadingDia;
     LoadData data;
     SwipeRefreshLayout swpiey;
+    Button logout;
+    TextView name, uname,age,sex;
     List<modelReminderRes> allrem = new ArrayList<>();
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -68,14 +78,40 @@ public class ProfileFragment extends Fragment {
     }
 
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+
+    private void getUser() {
+
+        Call<modelCustomer> call = apiClient.getDeclaration().getUser(preferences.getString("token",""));
+        call.enqueue(new Callback<modelCustomer>() {
+            @Override
+            public void onResponse(Call<modelCustomer> call, Response<modelCustomer> response) {
+                if(response.isSuccessful()){
+                    modelCustomer = response.body();
+                    if(modelCustomer.getFirstname()==null){
+                        name.setText("No Information Provided");
+                        uname.setText("Edit profile to add Profile Information");
+                        age.setVisibility(View.INVISIBLE);
+                        sex.setVisibility(View.INVISIBLE);
+                    }else{
+                        name.setText(modelCustomer.getLastname()+", "+modelCustomer.getFirstname());
+                        uname.setText("@"+modelCustomer.getUsername());
+                        age.setText("Age: "+modelCustomer.getAge());
+                        sex.setText("Sex: "+((modelCustomer.getSex()=="M")?"Female":"Male"));
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<modelCustomer> call, Throwable t) {
+                Toast.makeText(getContext(), "Server Failure", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
+
+
     private void getMeds() {
         final View meds = getLayoutInflater().inflate(R.layout.layout_medicines, null, false);
 
@@ -139,7 +175,14 @@ public class ProfileFragment extends Fragment {
         medlist = parent.findViewById(R.id.mymed_list);
         remlist = parent.findViewById(R.id.myrem_list);
         missedrem = parent.findViewById(R.id.mymissedrem_list);
+        logout = parent.findViewById(R.id.logoutbtn);
+        name = parent.findViewById(R.id.textView7);
+        uname = parent.findViewById(R.id.textView8);
+        age = parent.findViewById(R.id.txt_age);
+        sex = parent.findViewById(R.id.txt_sex);
         Button edit = parent.findViewById(R.id.materialButton);
+        preferences = getActivity().getSharedPreferences("User", MODE_PRIVATE);
+        editor = preferences.edit();
         final View empty = getLayoutInflater().inflate(R.layout.layout_empty, null, false);
         swpiey = parent.findViewById(R.id.swipeyy);
         allrem = LoadData.allrems;
@@ -151,6 +194,15 @@ public class ProfileFragment extends Fragment {
             }
         }
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.clear();
+                editor.commit();
+                startActivity(new Intent(getContext(),Login.class));
+                getActivity().finish();
+            }
+        });
 
         swpiey.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @SuppressLint("NotifyDataSetChanged")
@@ -188,6 +240,7 @@ public class ProfileFragment extends Fragment {
         getMissedRems();
         getMissedRems();
         getMissedRems();
+        getUser();
         loadingDia.dismissDialog();
         return parent;
     }

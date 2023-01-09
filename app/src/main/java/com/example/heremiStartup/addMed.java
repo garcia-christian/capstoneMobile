@@ -25,7 +25,7 @@ public class addMed extends AppCompatActivity {
         setContentView(R.layout.activity_add_med);
         med_name = findViewById(R.id.med_name);
         med_qty = findViewById(R.id.med_qty);
-        med_type = findViewById(R.id.med_type);
+
         backbtn = findViewById(R.id.back_btn_med);
         submit_med = findViewById(R.id.submit_med);
 

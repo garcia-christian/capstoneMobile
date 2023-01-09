@@ -43,7 +43,7 @@ public class LoadData extends ProfileFragment {
     }
 
     public void datainit() {
-        Call<List<modelReminderRes>> modelMedicineCall = apiClient.getDeclaration().getReminder();
+        Call<List<modelReminderRes>> modelMedicineCall = apiClient.getDeclaration().getReminder(MainActivity.UserID);
         Boolean check;
 
         modelMedicineCall.enqueue(new Callback<List<modelReminderRes>>() {

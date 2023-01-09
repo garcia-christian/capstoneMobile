@@ -9,496 +9,253 @@
     tools:context=".ProfileFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/swipeyy"
-        >
-
-
-    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="199dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="141dp">
+
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="199dp">
 
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/profile_img"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginStart="20dp"
-                android:src="@drawable/doc_1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="Lastname, Firstname"
-                android:textSize="23dp"
-                app:layout_constraintStart_toEndOf="@+id/profile_img"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="1dp"
-                android:text="\@username"
-                app:layout_constraintStart_toEndOf="@+id/profile_img"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-            <TextView
-                android:id="@+id/txt_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Age: 00 years"
-                app:layout_constraintStart_toEndOf="@id/profile_img"
-                app:layout_constraintTop_toBottomOf="@id/textView8" />
-
-            <TextView
-                android:id="@+id/txt_weight"
-                android:layout_marginEnd="50dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Weight: 00kg"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView8" />
-
-            <TextView
-                android:id="@+id/txt_sex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Sex: Male"
-                app:layout_constraintStart_toEndOf="@id/profile_img"
-                app:layout_constraintTop_toBottomOf="@id/txt_age" />
-
-            <TextView
-                android:id="@+id/txt_height"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Age: 00 years"
-                 android:layout_marginRight="50dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_age" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButton"
-                android:layout_width="84dp"
-                android:layout_height="39dp"
-                android:background="@drawable/roundedbtn"
-                android:text="EDIT"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="40dp"
-                android:textSize="10dp"
-                app:backgroundTint="@color/main"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_height" />
-
-            <View
-                android:id="@+id/divider"
-                android:layout_width="390dp"
-                android:layout_height="1dp"
-                android:background="@color/black_default"
-                android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialButton" />
-
-            <TextView
-                android:id="@+id/txt_lbl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp"
-                android:text="MY PURCHASES"
-                android:textSize="18dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider" />
-
-            <TableLayout
-                android:id="@+id/tableLayout"
-                android:layout_width="369dp"
-                android:layout_height="99dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_lbl">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="61dp">
-
-                    <LinearLayout
-                        android:layout_width="92.25dp"
-                        android:layout_height="99dp"
-                        android:layout_marginRight=".5dp"
-                        android:background="@drawable/borderl"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:padding="5dp"
-                            android:src="@drawable/ic_baseline_money_24"
-                            app:tint="@color/black_default" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="PENDING\n PAY"
-                            android:textSize="13dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="92.25dp"
-                        android:layout_height="99dp"
-                        android:layout_marginRight=".5dp"
-                        android:background="@drawable/border"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:padding="5dp"
-                            android:src="@drawable/ic_baseline_move_to_inbox_24"
-                            app:tint="@color/black_default" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="ORDER IN\n PROGRESS"
-                            android:textSize="13dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="92.25dp"
-                        android:layout_height="99dp"
-                        android:layout_marginRight=".5dp"
-                        android:background="@drawable/border"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:padding="5dp"
-                            android:src="@drawable/ic_baseline_delivery_dining_24"
-                            app:tint="@color/black_default" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="DELIVERY\n UPDATES"
-                            android:textSize="13dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="92.25dp"
-                        android:layout_height="99dp"
-                        android:layout_marginRight=".5dp"
-                        android:background="@drawable/borderr"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:padding="5dp"
-                            android:src="@drawable/ic_baseline_settings_backup_restore_24"
-                            app:tint="@color/black_default" />
-
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="PREVIOUSLY \n BOUGHT"
-                            android:textSize="13dp" />
-
-                    </LinearLayout>
-                </TableRow>
-            </TableLayout>
-
-            <TextView
-                android:id="@+id/txt_lbl2"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="MY WALLET"
-                android:textSize="18dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
-
-
-            <TableLayout
-                android:id="@+id/tableLayout2"
-                android:layout_width="369dp"
-                android:layout_height="99dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_lbl2">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="61dp">
-
-                    <LinearLayout
-                        android:layout_width="184.5dp"
-                        android:layout_height="99dp"
-                        android:layout_marginRight=".5dp"
-                        android:background="@drawable/borderl"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:padding="5dp"
-                            android:src="@drawable/ic_baseline_currency_bitcoin_24"
-                            app:tint="@color/black_default" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="HEREMI COINS"
-                            android:layout_marginTop="10dp"
-                            android:textSize="13dp" />
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                        android:layout_width="184.5dp"
-                        android:layout_height="99dp"
-                        android:layout_marginRight=".5dp"
-                        android:background="@drawable/borderr"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:padding="5dp"
-                            android:src="@drawable/ic_baseline_credit_card_24"
-                            app:tint="@color/black_default" />
-
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="CREDIT"
-                            android:layout_marginTop="10dp"
-                            android:textSize="13dp" />
-
-                    </LinearLayout>
-                </TableRow>
-            </TableLayout>
-
-            <View
-                android:id="@+id/divider2"
-                android:layout_marginTop="10dp"
-                android:layout_width="390dp"
-                android:layout_height="1dp"
-                android:background="@color/black_default"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
-
-            <TextView
-                android:id="@+id/txt_lbl3"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="MY MEDICINES"
-                android:textSize="18dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider2" />
-
-            <HorizontalScrollView
-                android:id="@+id/mymed_scroll"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginBottom="200dp"
                 android:layout_width="match_parent"
-                android:layout_height="208dp"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_lbl3">
+                android:layout_height="wrap_content">
+
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/profile_img"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/doc_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Lastname, Firstname"
+                    android:textSize="23dp"
+                    app:layout_constraintStart_toEndOf="@+id/profile_img"
+                    tools:ignore="MissingConstraints" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="1dp"
+                    android:text="\@username"
+                    app:layout_constraintStart_toEndOf="@+id/profile_img"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                <TextView
+                    android:id="@+id/txt_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Age: 00 years"
+                    app:layout_constraintStart_toEndOf="@id/profile_img"
+                    app:layout_constraintTop_toBottomOf="@id/textView8" />
+
+                <TextView
+                    android:id="@+id/txt_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Sex: Male"
+                    app:layout_constraintStart_toEndOf="@+id/profile_img"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_age" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/materialButton"
+                    android:layout_width="84dp"
+                    android:layout_height="39dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/roundedbtn"
+                    android:text="EDIT"
+                    android:textColor="@color/white"
+                    android:textSize="10dp"
+                    app:backgroundTint="@color/main"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="390dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/black_default"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_img" />
+
+
+                <TextView
+                    android:id="@+id/txt_lbl3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="MY MEDICINES"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+                <HorizontalScrollView
+                    android:id="@+id/mymed_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="208dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_lbl3">
+
+                    <LinearLayout
+                        android:id="@+id/mymed_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="390dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/black_default"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mymed_scroll" />
+
+                <TextView
+                    android:id="@+id/txt_lbl4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="MY REMINDERS"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+                <HorizontalScrollView
+                    android:id="@+id/myrem_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_lbl4">
+
+                    <LinearLayout
+                        android:id="@+id/myrem_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="390dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/black_default"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/myrem_scroll" />
+
+                <TextView
+                    android:id="@+id/txt_lbl5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="MY MISSED REMINDERS"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+                <HorizontalScrollView
+                    android:id="@+id/mymissedrem_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_lbl5">
+
+                    <LinearLayout
+                        android:id="@+id/mymissedrem_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                    </LinearLayout>
+                </HorizontalScrollView>
 
                 <LinearLayout
-                    android:id="@+id/mymed_list"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:id="@+id/categories_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="150dp"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/mymissedrem_scroll">
+
+
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:backgroundTint="@color/white"
+                        android:drawableLeft="@drawable/ic_baseline_settings_24"
+                        android:drawableTint="@color/black_default"
+                        android:text="SETTINGS"
+                        android:textAlignment="textStart" />
+
+                    <Button
+                        android:id="@+id/logoutbtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:backgroundTint="@color/white"
+                        android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
+                        android:drawableTint="@color/black_default"
+                        android:text="LOGOUT"
+                        android:textAlignment="textStart" />
+
 
                 </LinearLayout>
-            </HorizontalScrollView>
-            <View
-                android:id="@+id/divider3"
-                android:layout_marginTop="10dp"
-                android:layout_width="390dp"
-                android:layout_height="1dp"
-                android:background="@color/black_default"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mymed_scroll" />
-
-            <TextView
-                android:id="@+id/txt_lbl4"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="MY REMINDERS"
-                android:textSize="18dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider3" />
-
-            <HorizontalScrollView
-                android:id="@+id/myrem_scroll"
-                android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_lbl4">
-
-                <LinearLayout
-                    android:id="@+id/myrem_list"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                </LinearLayout>
-            </HorizontalScrollView>
-
-
-            <View
-                android:id="@+id/divider4"
-                android:layout_marginTop="10dp"
-                android:layout_width="390dp"
-                android:layout_height="1dp"
-                android:background="@color/black_default"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/myrem_scroll" />
-
-            <TextView
-                android:id="@+id/txt_lbl5"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="MY MISSED REMINDERS"
-                android:textSize="18dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider4" />
-
-            <HorizontalScrollView
-                android:id="@+id/mymissedrem_scroll"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginTop="8dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_lbl5">
-
-                <LinearLayout
-                    android:id="@+id/mymissedrem_list"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                </LinearLayout>
-            </HorizontalScrollView>
-
-            <LinearLayout
-                android:id="@+id/categories_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@id/mymissedrem_scroll"
-                android:orientation="vertical">
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="53dp"
-                    android:backgroundTint="@color/white"
-                    android:textAlignment="textStart"
-                    android:drawableLeft="@drawable/ic_baseline_favorite_24"
-                    android:drawableTint="@color/black_default"
-                    android:text="LIKES"/>
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="53dp"
-                    android:backgroundTint="@color/white"
-                    android:textAlignment="textStart"
-                    android:drawableLeft="@drawable/ic_baseline_phone_24"
-                    android:drawableTint="@color/black_default"
-                    android:text="EMERGENCY"/>
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="53dp"
-                    android:backgroundTint="@color/white"
-                    android:textAlignment="textStart"
-                    android:drawableLeft="@drawable/ic_baseline_settings_24"
-                    android:drawableTint="@color/black_default"
-                    android:text="SETTINGS"/>
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="53dp"
-                    android:backgroundTint="@color/white"
-                    android:textAlignment="textStart"
-                    android:drawableLeft="@drawable/ic_baseline_help_outline_24"
-                    android:drawableTint="@color/black_default"
-                    android:text="HELP"/>
-
-
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

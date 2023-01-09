@@ -1,11 +1,13 @@
 package com.example.heremiStartup;
 
 import static android.content.ContentValues.TAG;
+import static android.content.Context.MODE_PRIVATE;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -48,7 +50,9 @@ import com.google.maps.model.DirectionsRoute;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -58,8 +62,10 @@ import retrofit2.Response;
 
 
 public class HomeFragment extends Fragment implements ProductAdapter.OnProdListener {
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
-
+    modelCustomer modelCustomer;
     LoadingDia loadingDia;
     RecyclerView notifrecy, prodrecy;
     NotifAdapter notifAdapter = new NotifAdapter();
@@ -72,22 +78,13 @@ public class HomeFragment extends Fragment implements ProductAdapter.OnProdListe
     ArrayList<modelPartialPharma> pharmaslist = new ArrayList<>();
     ArrayList<modelLogRes> allData = new ArrayList<>();
     GeoApiContext mGeoApiContext;
-    TextView pharma, price,locationtxt;
+    TextView pharma, price,locationtxt,month,day, username;
     LoadData loadData;
     FusedLocationProviderClient fusedLocationProviderClient;
     private FusedLocationProviderClient mLocation;
     private final static int REQUEST_CODE = 100;
     SwipeRefreshLayout swipeRefreshLayout;
     private static final DecimalFormat df = new DecimalFormat("0.00");
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
 
     public HomeFragment(LoadingDia loadingDia) {
         this.loadingDia = loadingDia;
@@ -98,17 +95,6 @@ public class HomeFragment extends Fragment implements ProductAdapter.OnProdListe
 
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
-
-    }
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -213,18 +199,25 @@ public class HomeFragment extends Fragment implements ProductAdapter.OnProdListe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View parent = inflater.inflate(R.layout.fragment_home, container, false);
-
-
+        preferences = getActivity().getSharedPreferences("User", MODE_PRIVATE);
+        editor = preferences.edit();
+        ImageView searchbtn = parent.findViewById(R.id.searchbtn);
         ImageView shopbtn = parent.findViewById(R.id.shopbtn);
         notifrecy = parent.findViewById(R.id.notification_layout);
         prodrecy = parent.findViewById(R.id.essentials_list);
         locationtxt = parent.findViewById(R.id.address);
+        month = parent.findViewById(R.id.monthtxt);
+        day = parent.findViewById(R.id.textView);
+        username = parent.findViewById(R.id.username);
+
+        getUser();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(this.getContext());
         layoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
         initializeNotifView();
         getEssentials();
+        getDate();
         notifrecy.setLayoutManager(layoutManager);
         prodrecy.setLayoutManager(layoutManager2);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
@@ -250,6 +243,12 @@ public class HomeFragment extends Fragment implements ProductAdapter.OnProdListe
                 startActivity(c);
             }
         });
+        searchbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity( new Intent(getContext(), Search.class));
+            }
+        });
 
 
 
@@ -262,6 +261,38 @@ public class HomeFragment extends Fragment implements ProductAdapter.OnProdListe
         loadingDia.dismissDialog();
 
         return parent;
+    }
+
+    private void getUser() {
+
+            Call<modelCustomer> call = apiClient.getDeclaration().getUser(preferences.getString("token",""));
+
+            call.enqueue(new Callback<modelCustomer>() {
+                @Override
+                public void onResponse(Call<modelCustomer> call, Response<modelCustomer> response) {
+                    if(response.isSuccessful()){
+                        modelCustomer = response.body();
+                        username.setText("Hello, "+modelCustomer.getUsername());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<modelCustomer> call, Throwable t) {
+
+                }
+            });
+
+
+    }
+
+    private void getDate() {
+        Calendar rightNow = Calendar.getInstance();
+        String ym = String.valueOf(rightNow.get(Calendar.MONTH));
+        String yd = String.valueOf(rightNow.get(Calendar.DAY_OF_MONTH));
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM", Locale.ENGLISH);
+        month.setText(sdf.format(rightNow.getTime()));
+        day.setText(yd);
+
     }
 
 

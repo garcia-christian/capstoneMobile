@@ -3,6 +3,7 @@ package com.example.heremiStartup;
 import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,10 +14,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -30,6 +33,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,7 +47,7 @@ public class Cart extends AppCompatActivity{
     Button checkout;
     TextView name,loc,dist, subtotaltxt;
     GeoApiContext mGeoApiContext;
-
+    boolean cartempty = true;
     private FusedLocationProviderClient mLocation;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
@@ -74,8 +78,15 @@ public class Cart extends AppCompatActivity{
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent c = new Intent(Cart.this, Checkout.class);
-                startActivity(c);
+
+              if(cartempty){
+                  Toast.makeText(Cart.this, "The Cart is Empty", Toast.LENGTH_SHORT).show();
+              }else if(MainActivity.hasPending){
+                  Toast.makeText(Cart.this, "There is currently an order in progress", Toast.LENGTH_SHORT).show();
+              }else{
+                  Intent c = new Intent(Cart.this, Checkout.class);
+                  startActivity(c);
+              }
             }
         });
 
@@ -149,13 +160,19 @@ public class Cart extends AppCompatActivity{
     }
 
     private void initData() {
-        Call<List<modelCartDetails>> cartcall = apiClient.getDeclaration().getCart();
+        Call<List<modelCartDetails>> cartcall = apiClient.getDeclaration().getCart(MainActivity.UserID);
 
         cartcall.enqueue(new Callback<List<modelCartDetails>>() {
             @Override
             public void onResponse(Call<List<modelCartDetails>> call, Response<List<modelCartDetails>> response) {
                 cartDetails = response.body();
-                extractData();
+                if(cartDetails.size() != 0){
+                    cartempty=false;
+                    extractData();
+                }else{
+                    name.setText("Cart is Empty");
+                    cartempty=true;
+                }
 
             }
 
@@ -242,6 +259,7 @@ public class Cart extends AppCompatActivity{
             qty--;
             cartList.get(position).setCart_qty(String.valueOf(qty));
             cartAdapter.notifyItemChanged(position);
+            decrement(cartList.get(position).getCart_med_id());
             calculate();
         }
     }
@@ -252,9 +270,37 @@ public class Cart extends AppCompatActivity{
             qty++;
             cartList.get(position).setCart_qty(String.valueOf(qty));
             cartAdapter.notifyItemChanged(position);
+            increment(cartList.get(position).getCart_med_id());
             calculate();
         }
     }
+    private void increment(int id){
+        Call<ResponseBody> call = apiClient.getDeclaration().incrementCart(id,MainActivity.UserID);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                }
+            });
+    }
+    private void decrement(int id){
+        Call<ResponseBody> call = apiClient.getDeclaration().decrementCart(id,MainActivity.UserID);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+    }
 
 }

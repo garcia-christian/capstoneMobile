@@ -78,7 +78,7 @@ public class ShopFragment extends Fragment implements ProductAdapter.OnProdListe
       for(int i =0; i<pharmas.size();i++){
           final View toppharma = getLayoutInflater().inflate(R.layout.layout_toppharma, null, false);
           ImageView pharmapic = toppharma.findViewById(R.id.toppharm_pic);
-
+          Glide.with(getContext()).load(apiClient.BASEURL+pharmas.get(i).getLogo()).into(pharmapic);
           linear_pharma.addView(toppharma );
           loadPharma(pharmas.get(i),toppharma);
 

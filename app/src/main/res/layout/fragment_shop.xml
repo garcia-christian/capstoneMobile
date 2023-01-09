@@ -50,14 +50,15 @@
                 android:id="@+id/carousel"
                 android:layout_width="370dp"
                 android:layout_height="167dp"
-                app:showBottomShadow="false"
-                app:showTopShadow="false"
-                app:showNavigationButtons="false"
-
-                app:showCaption="false"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.487"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/guideline5" />
+
+                app:layout_constraintTop_toBottomOf="@id/guideline5"
+                app:showBottomShadow="false"
+                app:showCaption="false"
+                app:showNavigationButtons="false"
+                app:showTopShadow="false" />
 
             <TextView
                 android:id="@+id/textView2"

@@ -64,8 +64,8 @@
                     android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="Hello, Aurora!"
+                    android:layout_marginStart="24dp"
+                    android:text="Loading..."
                     android:textColor="@color/white"
                     android:textSize="22dp"
                     android:textStyle="bold"
@@ -109,22 +109,23 @@
                     android:id="@+id/monthtxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="48dp"
+
                     android:layout_marginTop="8dp"
                     android:text="MAY"
                     android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/calendar"
+                    app:layout_constraintStart_toStartOf="@+id/calendar"
                     app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="44dp"
                     android:layout_marginTop="32dp"
                     android:text="26"
                     android:textSize="35dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/calendar"
+                    app:layout_constraintStart_toStartOf="@+id/calendar"
                     app:layout_constraintTop_toTopOf="@+id/monthtxt" />
 
                 <LinearLayout
