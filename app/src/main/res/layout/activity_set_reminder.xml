@@ -112,7 +112,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="10dp"
-                    android:text="PREFERED TIME"
+                    android:text="PREFERRED TIME"
                     android:textSize="20dp" />
 
                 <!-- time 1 -->

@@ -7,6 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,12 +19,17 @@ import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.maps.DirectionsApiRequest;
@@ -28,11 +38,13 @@ import com.google.maps.PendingResult;
 import com.google.maps.model.DirectionsResult;
 import com.google.maps.model.DirectionsRoute;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,8 +52,12 @@ import retrofit2.Response;
 public class Search extends AppCompatActivity implements IndivProductAdapter.OnAllProdListener {
     TextView search;
     ImageView back;
+    Integer quantity=1;
+    modelPharmacy modelPharmacy;
     Switch distance,price;
     RecyclerView searchlist;
+    modelCart modelCart;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     IndivProductAdapter adapter;
    // List<modelIndivProduct> products = new ArrayList<modelIndivProduct>();
     ArrayList<modelIndivProduct> prods = new ArrayList<modelIndivProduct>();
@@ -171,7 +187,7 @@ public class Search extends AppCompatActivity implements IndivProductAdapter.OnA
 
     @Override
     public void onAllProdClick(int position) {
-
+        viewProd(prods.get(position));
 
     }
 
@@ -239,5 +255,137 @@ public class Search extends AppCompatActivity implements IndivProductAdapter.OnA
                 }
             }
         });
+    }
+    private void viewProd(modelIndivProduct product) {
+        final Dialog dialog = new Dialog(Search.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.layout_bottom_dialog_buy);
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+
+        ImageView prod_img = dialog.findViewById(R.id.prod_img);
+        TextView brand_name = dialog.findViewById(R.id.brand_name);
+        TextView generic_name = dialog.findViewById(R.id.generic_name);
+        TextView pricerange = dialog.findViewById(R.id.price_range);
+        TextView classification = dialog.findViewById(R.id.classification);
+        TextView category = dialog.findViewById(R.id.bottom_medcat);
+        ImageView addqty = dialog.findViewById(R.id.qtyadd);
+        ImageView subqty = dialog.findViewById(R.id.qtysub);
+        TextView cartqty = dialog.findViewById(R.id.qtycontext);
+        Button addToCart = dialog.findViewById(R.id.materialButton3);
+        Button buyNow = dialog.findViewById(R.id.materialButton3);
+        TextView pharamatxt = dialog.findViewById(R.id.avaialbleinpharmatxt);
+
+        pharamatxt.setText(product.getPharmacy_name()+": "+"10km");
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addItemToCart(product,quantity,dialog);
+            }
+        });
+
+
+        quantity=1;
+        cartqty.setText(quantity+"");
+        addqty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(quantity < 10){
+                    quantity++;
+                    cartqty.setText(quantity+"");
+                }
+
+            }
+        });
+        subqty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(quantity > 1){
+                    quantity--;
+                    cartqty.setText(quantity+"");
+                }
+            }
+        });
+
+
+        pricerange.setText("₱"+df.format(product.getMed_price()));
+        brand_name.setText(product.getGlobal_brand_name());
+        generic_name.setText(product.getGlobal_generic_name());
+        category.setText("Category: "+product.getMed_cat_desc());
+        classification.setText("Classification: "+product.getClass_desc());
+        Glide.with(dialog.getContext()).load(apiClient.BASEURL+product.getImage()).into(prod_img);
+
+
+
+    }
+
+    private void addItemToCart(modelIndivProduct product, int qty, Dialog dialog) {
+        modelCart = new modelCart(product.getMed_id(),product.getGlobal_med_id(),13,qty,MainActivity.UserID);
+        Call<List<modelCart>> modelCartCall = apiClient.getDeclaration().saveCart(modelCart);
+        modelCartCall.enqueue(new Callback<List<com.example.heremiStartup.modelCart>>() {
+            @Override
+            public void onResponse(Call<List<com.example.heremiStartup.modelCart>> call, Response<List<com.example.heremiStartup.modelCart>> response) {
+                if(response.code()==401){
+                    showAlertDialog("Would you like to replace the contents of the cart?", product,qty,dialog);
+
+                    dialog.dismiss();
+                }else{
+                    Toast.makeText(Search.this, "Added to Cart", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<com.example.heremiStartup.modelCart>> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+    private void showAlertDialog(String msg, modelIndivProduct product, int qty, Dialog dialog) {
+        AlertDialog adialog = new AlertDialog.Builder(Search.this)
+                .setTitle("Products from other pharmacy")
+                .setMessage(msg)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        executeWipe(product,qty,dialog);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .create();
+
+        adialog.show();
+    }
+
+    private void executeWipe(modelIndivProduct product, int qty, Dialog dialog) {
+        Call<ResponseBody> del = apiClient.getDeclaration().deleteCart(MainActivity.UserID);
+
+        del.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()){
+                    Toast.makeText(Search.this, "Cart Items Replaced", Toast.LENGTH_SHORT).show();
+                    addItemToCart(product,quantity,dialog);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
     }
 }

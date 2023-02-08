@@ -96,7 +96,7 @@
         android:id="@+id/avaialbleinpharmatxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Available in:"
+        android:text="Can be brought from:"
         android:layout_marginTop="10dp"
         android:textSize="15dp"
 

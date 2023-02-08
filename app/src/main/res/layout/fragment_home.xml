@@ -289,7 +289,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="53dp"
                         android:backgroundTint="@color/gray_theme"
-                        android:text="OVER THE CONTER" />
+                        android:text="OVER THE COUNTER" />
 
                     <Button
                         android:layout_width="match_parent"

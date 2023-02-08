@@ -13,7 +13,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class apiClient {
-    public static String BASEURL = "http://192.168.0.113:5000";
+    public static String BASEURL = "https://capstone-heremi.up.railway.app";
     private static Retrofit getRetrofit(){
 
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
